@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import Tweet from './Tweets/Tweet';
+import Timeline from "./Tweets/Timeline"
+import { Route, Switch } from "react-router-dom";
+import { Fragment, useEffect } from 'react';
+import { useHistory } from 'react-router';
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  let history = useHistory();
+
+  useEffect(() => {
+    history.push("/")
+  })
+ 
+    return (
+      <div className="App-header ">
+    <Fragment  >
+      
+      <Switch>
+     
+        <Route path="/create-tweet" exact>
+        <Tweet/>
+        </Route >
+        
+        <Route path="/">
+        <Timeline/>
+        </Route>
+        
+      </Switch>
+      
+      
+      </Fragment>
+      </div>
+    
   );
 }
 
