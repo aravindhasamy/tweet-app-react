@@ -22,8 +22,8 @@ function Timeline(props) {
 
   //remove tweet handler
   const removeTweetHandler = async (tweetItem) => {
-
-    if(confirm("Are you sure want to delete this tweet?")) {
+    let confirmDelete = confirm("Are you sure want to delete this tweet?")
+    if(confirmDelete) {
       let url = `https://aravind-tweet-app.herokuapp.com/tweets/${tweetItem._id}`;
       let response = await fetch(url, {
         method: "DELETE",
