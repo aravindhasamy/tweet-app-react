@@ -22,7 +22,7 @@ function Timeline(props) {
 
   //remove tweet handler
   const removeTweetHandler = async (tweetItem) => {
-    setUseUffectDependency(tweetItem);
+    
     let url = `https://aravind-tweet-app.herokuapp.com/tweets/${tweetItem._id}`;
     let response = await fetch(url, {
       method: "DELETE",
@@ -30,6 +30,7 @@ function Timeline(props) {
         "Content-Type": "application/json;charset=utf-8",
       },
     });
+    setUseUffectDependency(tweetItem);
   };
 
   //update tweet handler
