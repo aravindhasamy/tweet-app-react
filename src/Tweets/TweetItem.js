@@ -26,6 +26,12 @@ function TweetItem(props) {
     props.updateTweetField(props.id, tweet);
   };
 
+  const deleteHandler = () => {
+    let confirmDelete = confirm("Are you sure want to delete this tweet?")
+    if(confirmDelete) {
+      props.onRemove()
+    }
+  }
   return (
     <div className={classes.tweet}>
       {!isEdit && <span>{props.tweet}</span>}
@@ -56,7 +62,8 @@ function TweetItem(props) {
         </form>
       )}
       {!isEdit && (
-        <button onClick={props.onRemove} className={classes.delete}>
+        <button onClick={deleteHandler} className={classes.delete}>
+          
           Delete
         </button>
       )}

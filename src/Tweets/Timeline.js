@@ -22,9 +22,8 @@ function Timeline(props) {
 
   //remove tweet handler
   const removeTweetHandler = async (tweetItem) => {
-    let confirmDelete = confirm("Are you sure want to delete this tweet?")
-    if(confirmDelete) {
-      let url = `https://aravind-tweet-app.herokuapp.com/tweets/${tweetItem._id}`;
+    
+    let url = `https://aravind-tweet-app.herokuapp.com/tweets/${tweetItem._id}`;
       let response = await fetch(url, {
         method: "DELETE",
         headers: {
@@ -32,8 +31,6 @@ function Timeline(props) {
         },
       });
       setUseUffectDependency(tweetItem);
-    }
-    
    
   };
 
