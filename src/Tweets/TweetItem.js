@@ -26,8 +26,6 @@ function TweetItem(props) {
     props.updateTweetField(props.id, tweet);
   };
 
- 
-  }
   return (
     <div className={classes.tweet}>
       {!isEdit && <span>{props.tweet}</span>}
