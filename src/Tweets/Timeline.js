@@ -22,15 +22,19 @@ function Timeline(props) {
 
   //remove tweet handler
   const removeTweetHandler = async (tweetItem) => {
+
+    if(confirm("Are you sure want to delete this tweet?")) {
+      let url = `https://aravind-tweet-app.herokuapp.com/tweets/${tweetItem._id}`;
+      let response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+      });
+      setUseUffectDependency(tweetItem);
+    }
     
-    let url = `https://aravind-tweet-app.herokuapp.com/tweets/${tweetItem._id}`;
-    let response = await fetch(url, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-    });
-    setUseUffectDependency(tweetItem);
+   
   };
 
   //update tweet handler
