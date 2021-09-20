@@ -18,7 +18,7 @@ const submitHandler = async (event) => {
         return
     }
     
-    let url = "http://localhost:3005/tweets";
+    let url = "https://aravind-tweet-app.herokuapp.com/tweets";
 
     let requestBody = {
       content: tweet,

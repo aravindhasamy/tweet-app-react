@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 
 function Timeline(props) {
   const [tweetList, setTweetList] = useState([]);
-  const [useEffectDependency, setUseUffectDependency] = useState([]);
+  const [useEffectDependency, setUseUffectDependency] = useState();
   useEffect(() => {
     async function fetchData() {
-      let url = "http://localhost:3005/tweets";
+      let url = "https://aravind-tweet-app.herokuapp.com/tweets";
 
       let response = await fetch(url);
 
@@ -23,7 +23,7 @@ function Timeline(props) {
   //remove tweet handler
   const removeTweetHandler = async (tweetItem) => {
     setUseUffectDependency(tweetItem);
-    let url = `http://localhost:3005/tweets/${tweetItem._id}`;
+    let url = `https://aravind-tweet-app.herokuapp.com/tweets/${tweetItem._id}`;
     let response = await fetch(url, {
       method: "DELETE",
       headers: {
@@ -34,9 +34,8 @@ function Timeline(props) {
 
   //update tweet handler
   const updateTweetHandler = async (id, updatedTweet) => {
-    console.log("updateTweetHandler_id", id);
-    setUseUffectDependency(updatedTweet);
-    let url = `http://localhost:3005/tweets/${id}`;
+  
+    let url = `https://aravind-tweet-app.herokuapp.com/tweets/${id}`;
 
     let requestBody = {
       content: updatedTweet,
@@ -49,6 +48,7 @@ function Timeline(props) {
       },
       body: JSON.stringify(requestBody),
     });
+    setUseUffectDependency(updatedTweet);
   };
 
   const Tweets = tweetList.map((tweet) => (
